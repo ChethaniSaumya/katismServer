@@ -50,7 +50,7 @@ app.use(function (req, res, next) {
 });
 
 var corsOptions = {
-    origin: ['http://localhost:3000/', 'http://katism.pages.dev/', 'https://katism.pages.dev/' ],
+    origin: ['http://localhost:3000/','http://slash-dapp.com', 'https://slash-dapp.com', 'http://katism.pages.dev/', 'https://katism.pages.dev/' ],
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
