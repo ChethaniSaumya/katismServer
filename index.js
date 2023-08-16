@@ -50,7 +50,7 @@ app.use(function (req, res, next) {
 });
 
 var corsOptions = {
-    origin: ['http://localhost:3000/','http://slash-dapp.com', 'https://slash-dapp.com', 'http://katism.pages.dev/', 'https://katism.pages.dev/' ],
+    origin: ['http://localhost:3000/', 'http://slash-dapp.com/', 'https://slash-dapp.com/'],
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -74,9 +74,16 @@ app.post('/slashProfile', cors(corsOptions), (req, res) => {
             var file = req.files.file;
             var filename = file.name;
 
-
             let csvName = "./uploads_new/" + addressW + '.png';
             let csvNameBNB = "./uploads/" + addressW + '.png';
+
+            try{
+            // Delete the remote file
+
+            await client.remove(csvNameBNB);
+            }catch(err){
+                console.log(err);
+            }
 
             file.mv(__dirname + '/uploads/' + filename, async function (err) {
                 if (err) {
@@ -112,7 +119,7 @@ app.post('/slashProfile', cors(corsOptions), (req, res) => {
                                 console.log(await client.list())
                                 await client.uploadFrom(csvName, csvNameBNB);
                                 await client.downloadTo(csvName, csvNameBNB);
-                               //res.status(200).json({ message: 'Image uploaded successfully' });
+                                //res.status(200).json({ message: 'Image uploaded successfully' });
                                 res.status(200).sendFile(__dirname + '/public/index.html');
 
 
