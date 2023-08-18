@@ -50,7 +50,7 @@ app.use(function (req, res, next) {
 });
 
 var corsOptions = {
-    origin: ['http://localhost:3000/', 'http://slash-dapp.com/', 'https://slash-dapp.com/'],
+    origin: ['http://localhost:3000/', 'http://ledgitviable.com/', 'https://ledgitviable.com/'],
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
